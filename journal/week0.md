@@ -4,8 +4,6 @@ Required Homework/Tasks
 I followed the bootcamp video instructions and other documents as described in week0 submission on student portal to setup my AWS accounts and setup AWS CLI billing and budget alarms with both AWS console and CLI. Below is screenshot of my accomplishemnts: clear
 
 ![MY AWS CLI screenshot](_docs/assets/AWS_CLI.png)
-![MY Budget screenshot](_docs/assets/budget.png)
-![MY Cloudwatch screenshot](_docs/assets/cloudwatch.png)
 
 
 
