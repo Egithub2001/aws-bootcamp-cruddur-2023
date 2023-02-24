@@ -1,3 +1,5 @@
+# this is the previous Docekr file without multistaging 
+
 FROM node:16.18
 
 ENV PORT=3000
