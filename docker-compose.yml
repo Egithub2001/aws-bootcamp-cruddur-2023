@@ -9,6 +9,11 @@ services:
       - "4567:4567"
     volumes:
       - ./backend-flask:/backend-flask
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4567/healthcheck"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
   frontend-react-js:
     environment:
       REACT_APP_BACKEND_URL: "https://4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}"
@@ -20,6 +25,11 @@ services:
       # reason why I added the following line
       #https://stackoverflow.com/questions/30043872/docker-compose-node-modules-not-present-in-a-volume-after-npm-install-succeeds
       - /frontend-react-js/node_modules
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/healthcheck"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
 # the name flag is a hack to change the default prepend folder
 # name when outputting the image names
