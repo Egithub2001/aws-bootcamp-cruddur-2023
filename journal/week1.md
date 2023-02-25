@@ -93,4 +93,6 @@ Use the latest version of packages: Always use the latest version of packages to
 Use labels: Use labels to add metadata to the image, such as the version of the application, the maintainer, and the build date.
 
 
-
+## Just for my future reference: 
+      I learned more about frontend backened codings with below Andrews'video: I learned how to create more pages and the structure of codings for this purpose. very great source. maybe need to review in future if I forgot something.
+      https://www.youtube.com/watch?v=k-_o0cCpksk&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=28
