@@ -11,8 +11,7 @@ by adding the following lines to my docker composer file, I do not need to manua
      - /frontend-react-js/node_modules
 
 
-**Homework challenge: 
-**
+**Homework challenge: **
 I worked on all he homework challenges and I encountered a few issues and learned new things from each tasks as follows:
 
 - I had an issue with running the dockerfile CMD as an external script, I found out it was about the permission of the script on my local directory which I fixed the issue and it worked
