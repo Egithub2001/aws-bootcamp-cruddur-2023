@@ -1,4 +1,5 @@
 # Week 1 — App Containerization
+
 pretty much I followed Andrews's week 1 journal : 
 https://github.com/omenking/aws-bootcamp-cruddur-2023/blob/week-1/journal/week1.md
 
@@ -11,7 +12,7 @@ by adding the following lines to my docker composer file, I do not need to manua
      - /frontend-react-js/node_modules
 
 
-**Homework challenge: **
+## Homework challenge: 
 I worked on all he homework challenges and I encountered a few issues and learned new things from each tasks as follows:
 
 - I had an issue with running the dockerfile CMD as an external script, I found out it was about the permission of the script on my local directory which I fixed the issue and it worked
@@ -24,10 +25,10 @@ I worked on all he homework challenges and I encountered a few issues and learne
 - By applying multi-stage building for a Dockerfile build, I learned multi staging approach separates the build and runtime environments, allowing us to install the Python dependencies in a clean environment and avoid including unnecessary build tools in the final image. It also reduces the image size, as the builder stage is discarded after the dependencies are installed. 
 
 
-**how I used multisatging for backend and frontend dockers: 
-**
-**Backend:
-**
+### how I used multisatging for backend and frontend dockers: 
+
+#### Backend:
+
 <img width="532" alt="Screenshot 2023-02-24 at 19 25 38" src="https://user-images.githubusercontent.com/123549868/221324881-8db4f25f-0f03-434b-8974-7bd291e51849.png">
 
 In this Dockerfile, the build stage is named "builder" and the runtime stage is named "runtime". In the build stage, we copy the requirements file, install the dependencies using pip, and copy the rest of the application code. We also set the PATH environment variable to include the user's local bin directory, so that any scripts installed using pip can be run from the command line.
