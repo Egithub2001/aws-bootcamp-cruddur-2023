@@ -37,8 +37,8 @@ In the runtime stage, we use a fresh Python image and copy only the necessary fi
 
 This approach separates the build and runtime environments, allowing us to install the Python dependencies in a clean environment and avoid including unnecessary build tools in the final image. It also reduces the image size, as the builder stage is discarded after the dependencies are installed.
 
-**Frontend: 
-**<img width="500" alt="Screenshot 2023-02-24 at 19 26 27" src="https://user-images.githubusercontent.com/123549868/221324927-099d5184-1592-4488-8aeb-7821e82e239a.png">
+#### Frontend: 
+<img width="500" alt="Screenshot 2023-02-24 at 19 26 27" src="https://user-images.githubusercontent.com/123549868/221324927-099d5184-1592-4488-8aeb-7821e82e239a.png">
 
 In this Dockerfile, the build stage is named "builder" and the runtime stage is named "runtime". In the build stage, we first copy the package.json and package-lock.json files and install the dependencies using npm install. We then copy the rest of the application code and build the production-ready assets using npm run build.
 
@@ -50,8 +50,8 @@ This approach separates the build and runtime environments, allowing us to insta
 My bakconed images changed from 129 M to 125 M 
 And frontend docker changed from 1.19 g to 122M
 
-**- I added healthchek for both backend and frontend, and I realised the health check lines needs to be added to composer file.
-**- 
+# I added healthchek for both backend and frontend, and I realised the health check lines needs to be added to composer file:
+
 - defined a service called backend that is built from the Dockerfile using the runtime target. We have also defined a healthcheck configuration option that will run every 30 seconds. The test option specifies the command to run to check the health of the container. In this case, the command is curl -f http://localhost:${PORT}/healthcheck, which will access the /healthcheck endpoint to verify that the application is running correctly.
 
 We have also specified the interval, timeout, and retries options. The interval option specifies how often the healthcheck command should be run, the timeout option specifies how long the command has to complete before it is considered failed, and the retries option specifies how many times the command should be retried before the container is considered unhealthy.
@@ -64,18 +64,18 @@ The healthcheck configuration is actually defined in the Docker Compose file, no
 
 So you would need to create a new or modify an existing Docker Compose file for your application and add the healthcheck configuration to the service you want to monitor.
 
-**backend healthcheck : 
-**
+## backend healthcheck : 
+
 -<img width="561" alt="Screenshot 2023-02-24 at 19 32 34" src="https://user-images.githubusercontent.com/123549868/221325316-5b2694e5-b454-45dc-b90b-b049a807afe5.png">
 
-**Frontend healthcheck:**
+## Frontend healthcheck:**
 
 <img width="586" alt="Screenshot 2023-02-24 at 19 33 16" src="https://user-images.githubusercontent.com/123549868/221325365-6b0319b8-6390-4d7e-86e5-b73c879aaeae.png">
 
 
 
-** some best practices for Dockerfiles:
-**
+## some best practices for Dockerfiles:
+
     Use official base images: Instead of creating your own base image, use an official base image from Docker Hub or a trusted registry. Official images are regularly updated and maintained, and they have been tested for security and stability.
 
     Keep your Dockerfile simple: Keep your Dockerfile as simple as possible by minimizing the number of steps and using multi-stage builds to reduce the size of the final image.
