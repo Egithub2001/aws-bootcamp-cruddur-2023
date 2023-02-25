@@ -76,21 +76,21 @@ So you would need to create a new or modify an existing Docker Compose file for 
 
 ## some best practices for Dockerfiles:
 
-    Use official base images: Instead of creating your own base image, use an official base image from Docker Hub or a trusted registry. Official images are regularly updated and maintained, and they have been tested for security and stability.
+Use official base images: Instead of creating your own base image, use an official base image from Docker Hub or a trusted registry. Official images are regularly updated and maintained, and they have been tested for security and stability.
 
-    Keep your Dockerfile simple: Keep your Dockerfile as simple as possible by minimizing the number of steps and using multi-stage builds to reduce the size of the final image.
+Keep your Dockerfile simple: Keep your Dockerfile as simple as possible by minimizing the number of steps and using multi-stage builds to reduce the size of the final image.
 
-    Use caching effectively: Docker can use cached layers to speed up the build process. To take advantage of caching, put the steps that change least frequently near the top of the Dockerfile.
+Use caching effectively: Docker can use cached layers to speed up the build process. To take advantage of caching, put the steps that change least frequently near the top of the Dockerfile.
 
-    Minimize layer size: Each command in a Dockerfile creates a new layer in the image. To reduce the size of the image, try to combine multiple commands into a single RUN statement and use the --no-cache flag to avoid creating unnecessary layers.
+Minimize layer size: Each command in a Dockerfile creates a new layer in the image. To reduce the size of the image, try to combine multiple commands into a single RUN statement and use the --no-cache flag to avoid creating unnecessary layers.
 
-    Remove unnecessary files: Remove any unnecessary files from the final image to reduce its size. This includes temporary files created during the build process, as well as any files that are not required for the application to run.
+Remove unnecessary files: Remove any unnecessary files from the final image to reduce its size. This includes temporary files created during the build process, as well as any files that are not required for the application to run.
 
-    Use environment variables: Use environment variables to pass configuration data to the application at runtime. This makes it easier to configure the application for different environments and reduces the risk of hardcoding sensitive information in the Dockerfile.
+Use environment variables: Use environment variables to pass configuration data to the application at runtime. This makes it easier to configure the application for different environments and reduces the risk of hardcoding sensitive information in the Dockerfile.
 
-    Use the latest version of packages: Always use the latest version of packages to ensure that your application is up to date and secure.
+Use the latest version of packages: Always use the latest version of packages to ensure that your application is up to date and secure.
 
-    Use labels: Use labels to add metadata to the image, such as the version of the application, the maintainer, and the build date.
+Use labels: Use labels to add metadata to the image, such as the version of the application, the maintainer, and the build date.
 
 
 
