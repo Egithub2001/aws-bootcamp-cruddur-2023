@@ -1,21 +1,15 @@
-# Build stage
-FROM node:16.18 AS builder
+# this is the previous Docekr file without multistaging 
 
-WORKDIR /frontend-react-js
-COPY package*.json ./
-RUN npm install --production
-COPY . .
-RUN npm run build
+FROM node:16.18
 
-# Runtime stage
-FROM node:16.18-alpine AS runtime
-
-WORKDIR /frontend-react-js
 ENV PORT=3000
 
-COPY --from=builder /frontend-react-js/build ./build
-COPY --from=builder /frontend-react-js/start_npm.sh .
-RUN chmod +x start_npm.sh
-
+COPY . /frontend-react-js
+WORKDIR /frontend-react-js
+RUN npm install
 EXPOSE ${PORT}
+#CMD ["npm", "start"]
+RUN chmod +x start_npm.sh
+COPY start_npm.sh /frontend-react-js
+RUN chmod +x /frontend-react-js/start_npm.sh
 ENTRYPOINT ["/frontend-react-js/start_npm.sh"]

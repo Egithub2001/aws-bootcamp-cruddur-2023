@@ -1,24 +1,18 @@
-# Build stage
-FROM python:3.10-slim-buster AS builder
+# this is the previous Docekr file without multistaging 
+FROM python:3.10-slim-buster
 
 WORKDIR /backend-flask
 
 COPY requirements.txt requirements.txt
-RUN pip3 install --no-cache-dir --user -r requirements.txt
-ENV PATH=/root/.local/bin:$PATH
+RUN pip3 install -r requirements.txt
 
 COPY . .
 
-# Runtime stage
-FROM python:3.10-slim-buster AS runtime
-
-WORKDIR /backend-flask
-
-COPY --from=builder /root/.local /root/.local
-COPY --from=builder /backend-flask .
-
 ENV FLASK_ENV=development
-EXPOSE ${PORT}
 
+EXPOSE ${PORT}
+#CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0", "--port=4567"]
 RUN chmod +x start_flask.sh
+COPY start_flask.sh /backend-flask
+RUN chmod +x /backend-flask/start_flask.sh
 ENTRYPOINT ["/backend-flask/start_flask.sh"]
