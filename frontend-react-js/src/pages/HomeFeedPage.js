@@ -1,5 +1,6 @@
 import './HomeFeedPage.css';
 import React from "react";
+import { Auth } from 'aws-amplify';
 
 import DesktopNavigation  from '../components/DesktopNavigation';
 import DesktopSidebar     from '../components/DesktopSidebar';
@@ -9,7 +10,7 @@ import ReplyForm from '../components/ReplyForm';
 
 // [TODO] Authenication
 import Cookies from 'js-cookie'
-import { Auth } from 'aws-amplify';
+
 
 export default function HomeFeedPage() {
   const [activities, setActivities] = React.useState([]);
@@ -36,8 +37,7 @@ export default function HomeFeedPage() {
     }
   };
 
- // set a state
-const [user, setUser] = React.useState(null);
+
 
 // check if we are authenicated
 const checkAuth = async () => {
@@ -60,10 +60,7 @@ const checkAuth = async () => {
 };
 
 // check when the page loads if we are authenicated
-React.useEffect(()=>{
-  loadData();
-  checkAuth();
-}, [])
+
 
   React.useEffect(()=>{
     //prevents double call
