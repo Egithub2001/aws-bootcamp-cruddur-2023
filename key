@@ -4,3 +4,9 @@ gp env CONNECTION_URL="postgresql://postgres:password@localhost:5432/cruddur"
 for production our RDS DB 
 export PROD_CONNECTION_URL="postgresql://crudurroot:crudurpass123@cruddur-db-instance.chqhjemn1xyg.ca-central-1.rds.amazonaws.com:5432/cruddur"
 gp env PROD_CONNECTION_URL="postgresql://crudurroot:crudurpass123@cruddur-db-instance.chqhjemn1xyg.ca-central-1.rds.amazonaws.com:5432/cruddur"
+
+
+export DB_SG_ID="sg-00c7492b51a606e68"
+gp env DB_SG_ID="sg-00c7492b51a606e68"
+export DB_SG_RULE_ID="sgr-058fb2d0757c89b12"
+gp env DB_SG_RULE_ID="sgr-058fb2d0757c89b12"
