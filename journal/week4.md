@@ -3,6 +3,7 @@
 history of the command that helped me setup my RDS scripts 
 
  psql -Upostgres --host localhost
+ 
  psql -Upostgres cruddur <db/schema.sql 
  psql cruddur < db/schema.sql -h localhost -U postgres
  psql postgresql://postgres:password@localhost:5432/cruddur
