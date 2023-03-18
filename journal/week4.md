@@ -59,3 +59,13 @@ history of the command that helped me setup my RDS scripts
   38  ./bin/db_connect sir
 
 
+
+
+This for env
+
+ #export CONNECTION_URL="postgresql://postgres:password@localhost:5432/cruddur"
+ #gp env CONNECTION_URL="postgresql://postgres:password@localhost:5432/cruddur"
+
+for production our RDS DB 
+export PROD_CONNECTION_URL="postgresql://crudurroot:crudurpass123@cruddur-db-instance.chqhjemn1xyg.ca-central-1.rds.amazonaws.com:5432/cruddur"
+gp env PROD_CONNECTION_URL="postgresql://crudurroot:crudurpass123@cruddur-db-instance.chqhjemn1xyg.ca-central-1.rds.amazonaws.com:5432/cruddur"
