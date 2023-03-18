@@ -71,3 +71,18 @@ for production our RDS DB
 export PROD_CONNECTION_URL="postgresql://crudurroot:crudurpass123@cruddur-db-instance.chqhjemn1xyg.ca-central-1.rds.amazonaws.com:5432/cruddur"
 
 gp env PROD_CONNECTION_URL="postgresql://crudurroot:crudurpass123@cruddur-db-instance.chqhjemn1xyg.ca-central-1.rds.amazonaws.com:5432/cruddur"
+
+Command to fix the email verification/ temp password issue: ( needs to be done vi AWS CLI only)
+
+    aws ec2 modify-security-group-rules \
+    --group-id $DB_SG_ID \
+    --security-group-rules "SecurityGroupRuleId=$DB_SG_RULE_ID,SecurityGroupRule=       {Description=GITPOD,IpProtocol=tcp,FromPort=5432,ToPort=5432,CidrIpv4=$GITPOD_IP/32}"
+    
+    
+  for lambda to wor I need to add VPC and set the permision tab by creating a custome role : 
+  
+  <img width="848" alt="Screenshot 2023-03-18 at 11 57 21" src="https://user-images.githubusercontent.com/123549868/226116878-89efd1b3-e1cf-4fa7-a88f-79755d99c6af.png">
+
+<img width="868" alt="Screenshot 2023-03-18 at 11 57 35" src="https://user-images.githubusercontent.com/123549868/226116951-5335b8f8-3ace-43a5-bd61-302ee3fe37bd.png">
+
+  
