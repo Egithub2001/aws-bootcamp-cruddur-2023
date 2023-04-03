@@ -36,11 +36,17 @@ the above command will create following parameter in system manager:
 
 <img width="1106" alt="Screenshot 2023-04-03 at 04 38 52" src="https://user-images.githubusercontent.com/123549868/229457121-24b839e4-92c6-411b-943c-1f8920a76883.png">
 
+the right approach is to create the following not to cobmine them in one policy file:
 
 
 ```sh
-the right approach is to create the following not to cobmine them in one policy file:
 
 service-assume-role-execution-policy.json
 service-execution-policy.json 
+```
+
+and then below comman dworked, not with \ and multiple lines, for some wierd reason!
+
+```sh
+aws iam create-role --role-name CruddurServiceExecutionPolicy  --assume-role-policy-document "file://aws/policies/service-assume-role-execution-policy.json"
 ```
