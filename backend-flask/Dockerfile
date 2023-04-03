@@ -1,5 +1,6 @@
 # this is the previous Docekr file without multistaging 
-FROM python:3.10-slim-buster
+#FROM python:3.10-slim-buster
+FROM 533378368499.dkr.ecr.ca-central-1.amazonaws.com/cruddur-python:3.10-slim-buster
 
 WORKDIR /backend-flask
 
