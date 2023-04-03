@@ -110,3 +110,13 @@ and to be able to write to teh daemon:
 ```sh
 aws iam attach-role-policy --policy-arn arn:aws:iam::aws:policy/AWSXRayDaemonWriteAccess --role-name CruddurTaskRole
 ```
+
+and then create aws/task-definitions and created related json files for backend task, had to update the task with my own aws account number and made sure keys and paramater are the same as docker-compose file.
+then run the following command:
+```sh 
+aws ecs register-task-definition --cli-input-json file://aws/task-definitions/backend-flask.json
+
+```
+<img width="1294" alt="Screenshot 2023-04-03 at 06 06 29" src="https://user-images.githubusercontent.com/123549868/229479117-aa725d6f-2c16-4911-bec1-95ff5147b0ac.png">
+
+
