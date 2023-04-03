@@ -100,7 +100,7 @@ aws iam put-role-policy \
 "
 ```
   
-did not need to run this as the abov ecommand already attache teh policy:
+the above command already created the rule and one policyepolicy, now we are attaching more policies.
 
 ```sh 
 aws iam attach-role-policy --policy-arn arn:aws:iam::aws:policy/CloudWatchFullAccess --role-name CruddurTaskRole
