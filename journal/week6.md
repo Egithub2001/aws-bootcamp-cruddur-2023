@@ -41,8 +41,6 @@ the above command will create following parameter in system manager:
 ```sh
 the right approach is to create the following not to cobmine them in one policy file:
 
- service-assume-role-execution-policy.json
-wip
-March 27, 2023 20:45
+service-assume-role-execution-policy.json
 service-execution-policy.json 
 ```
