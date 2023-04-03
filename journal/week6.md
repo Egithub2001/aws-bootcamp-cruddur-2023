@@ -99,4 +99,14 @@ aws iam put-role-policy \
 }
 "
 ```
-   
+  
+did not need to run this as the abov ecommand already attache teh policy:
+
+```sh 
+aws iam attach-role-policy --policy-arn arn:aws:iam::aws:policy/CloudWatchFullAccess --role-name CruddurTaskRole
+```
+
+and to be able to write to teh daemon: 
+```sh
+aws iam attach-role-policy --policy-arn arn:aws:iam::aws:policy/AWSXRayDaemonWriteAccess --role-name CruddurTaskRole
+```
