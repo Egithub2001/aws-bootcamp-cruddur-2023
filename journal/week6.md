@@ -50,3 +50,14 @@ and then below comman dworked, not with \ and multiple lines, for some wierd rea
 ```sh
 aws iam create-role --role-name CruddurServiceExecutionPolicy  --assume-role-policy-document "file://aws/policies/service-assume-role-execution-policy.json"
 ```
+
+for creating role and policy with CLI:  (Andrew had to finally do it with aws console, but I figured it with aws cli):
+had to update "service-execution-policy.json" with this line:       "Resource": "arn:aws:ssm:ca-central-1:533378368499:parameter/cruddur/backend-flask/*"
+
+
+```sh
+   55  aws iam create-role --role-name CruddurServiceExecutionRole --assume-role-policy-document file://aws/policies/service-execution-policy.json
+   
+   aws iam put-role-policy --role-name CruddurServiceExecutionRole --policy-name CruddurServiceExecutionPolicy --policy-document file://aws/policies/service-execution-policy.json
+   
+   
