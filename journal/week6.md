@@ -31,3 +31,8 @@ aws ssm put-parameter --type "SecureString" --name "/cruddur/backend-flask/AWS_S
 aws ssm put-parameter --type "SecureString" --name "/cruddur/backend-flask/CONNECTION_URL" --value $PROD_CONNECTION_URL
 aws ssm put-parameter --type "SecureString" --name "/cruddur/backend-flask/ROLLBAR_ACCESS_TOKEN" --value $ROLLBAR_ACCESS_TOKEN
 aws ssm put-parameter --type "SecureString" --name "/cruddur/backend-flask/OTEL_EXPORTER_OTLP_HEADERS" --value "x-honeycomb-team=$HONEYCOMB_API_KEY"
+
+the above command will create following parameter in system manager:
+
+<img width="1106" alt="Screenshot 2023-04-03 at 04 38 52" src="https://user-images.githubusercontent.com/123549868/229457121-24b839e4-92c6-411b-943c-1f8920a76883.png">
+
