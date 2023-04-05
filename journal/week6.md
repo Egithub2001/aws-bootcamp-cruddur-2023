@@ -120,3 +120,8 @@ aws ecs register-task-definition --cli-input-json file://aws/task-definitions/ba
 <img width="1294" alt="Screenshot 2023-04-03 at 06 06 29" src="https://user-images.githubusercontent.com/123549868/229479117-aa725d6f-2c16-4911-bec1-95ff5147b0ac.png">
 
 
+had to add more permison to CruddurServiceExecutionPolicy
+
+
+<img width="1033" alt="Screenshot 2023-04-04 at 21 59 35" src="https://user-images.githubusercontent.com/123549868/229961691-45f8a826-3655-42f7-8913-782d7df050e4.png">
+
