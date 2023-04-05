@@ -125,3 +125,13 @@ had to add more permison to CruddurServiceExecutionPolicy
 
 <img width="1033" alt="Screenshot 2023-04-04 at 21 59 35" src="https://user-images.githubusercontent.com/123549868/229961691-45f8a826-3655-42f7-8913-782d7df050e4.png">
 
+
+had to install session manager 
+
+curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb" -o "session-manager-plugin.deb"
+
+sudo dpkg -i session-manager-plugin.deb
+
+and then connect to ecs:
+
+aws ecs execute-command  --region $AWS_DEFAULT_REGION --cluster cruddur --task fc1a83bb54f4452b82bf527286a336fe --container backend-flask --command "/bin/bash" --interactive
