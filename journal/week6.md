@@ -3,34 +3,46 @@
 
 I had the following issue next time trying to continue setting up my ECR:
 
-
+```sh
 "failed to solve: 533378368499.dkr.ecr.ca-central-1.amazonaws.com/cruddur-python:3.10-slim-buster: pulling from host 533378368499.dkr.ecr.ca-central-1.amazonaws.com failed with status code [manifests 3.10-slim-buster]: 401 Unauthorized"
+```
 
 and I realized becaaue I forgot to login before that:
 
+```sh
 aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin "$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com"
-
+```
 also for flask docekr file, make sure you cd to backend-flask directory before running this: 
 
+```sh
 docker build -t backend-flask .
+```
 
 for Passing Senstive Data to Task Defintion:
 
 first I export honeycob header in gipod terminal and then did teh following:
 
- 28  export OTEL_EXPORTER_OTLP_HEADERS="x-honeycomb-team=${HONEYCOMB_API_KEY}"
+```sh
+
+  export OTEL_EXPORTER_OTLP_HEADERS="x-honeycomb-team=${HONEYCOMB_API_KEY}"
  
+ ```
  make sure is there:
  
+ ```sh
  echo $OTEL_EXPORTER_OTLP_HEADERS
  
+ ```
  and then run these:
  
+ ```sh
 aws ssm put-parameter --type "SecureString" --name "/cruddur/backend-flask/AWS_ACCESS_KEY_ID" --value $AWS_ACCESS_KEY_ID
 aws ssm put-parameter --type "SecureString" --name "/cruddur/backend-flask/AWS_SECRET_ACCESS_KEY" --value $AWS_SECRET_ACCESS_KEY
 aws ssm put-parameter --type "SecureString" --name "/cruddur/backend-flask/CONNECTION_URL" --value $PROD_CONNECTION_URL
 aws ssm put-parameter --type "SecureString" --name "/cruddur/backend-flask/ROLLBAR_ACCESS_TOKEN" --value $ROLLBAR_ACCESS_TOKEN
 aws ssm put-parameter --type "SecureString" --name "/cruddur/backend-flask/OTEL_EXPORTER_OTLP_HEADERS" --value "x-honeycomb-team=$HONEYCOMB_API_KEY"
+
+```
 
 the above command will create following parameter in system manager:
 
@@ -128,10 +140,14 @@ had to add more permison to CruddurServiceExecutionPolicy
 
 had to install session manager 
 
+```sh
 curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb" -o "session-manager-plugin.deb"
 
 sudo dpkg -i session-manager-plugin.deb
 
+```
 and then connect to ecs:
 
+```sh
 aws ecs execute-command  --region $AWS_DEFAULT_REGION --cluster cruddur --task fc1a83bb54f4452b82bf527286a336fe --container backend-flask --command "/bin/bash" --interactive
+```
