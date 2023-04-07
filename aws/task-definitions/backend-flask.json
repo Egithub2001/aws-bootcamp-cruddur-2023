@@ -9,19 +9,7 @@
       "FARGATE" 
     ],
     "containerDefinitions": [
-      {
-        "name": "xray",
-        "image": "public.ecr.aws/xray/aws-xray-daemon" ,
-        "essential": true,
-        "user": "1337",
-        "portMappings": [
-          {
-            "name": "xray",
-            "containerPort": 2000,
-            "protocol": "udp"
-          }
-        ]
-      },
+      
       {
         "name": "backend-flask",
         "image": "533378368499.dkr.ecr.ca-central-1.amazonaws.com/backend-flask",
@@ -29,7 +17,7 @@
         "healthCheck": {
           "command": [
             "CMD-SHELL",
-            "python /backend-flask/bin/health-check"
+            "python /backend-flask/bin/flask/health-check"
           ],
           "interval": 30,
           "timeout": 5,
@@ -52,11 +40,12 @@
               "awslogs-stream-prefix": "backend-flask"
           }
         },
+
         "environment": [
           {"name": "OTEL_SERVICE_NAME", "value": "backend-flask"},
           {"name": "OTEL_EXPORTER_OTLP_ENDPOINT", "value": "https://api.honeycomb.io"},
-          {"name": "AWS_COGNITO_USER_POOL_ID", "value": "ca-central-1_CQ4wDfnwc"},
-          {"name": "AWS_COGNITO_USER_POOL_CLIENT_ID", "value": "5b6ro31g97urk767adrbrdj1g5"},
+          {"name": "AWS_COGNITO_USER_POOL_ID", "value": "ca-central-1_oQPCn5xsd"},
+          {"name": "AWS_COGNITO_USER_POOL_CLIENT_ID", "value": "2ta996r3cs3kf329nr5glk84oj"},
           {"name": "FRONTEND_URL", "value": "*"},
           {"name": "BACKEND_URL", "value": "*"},
           {"name": "AWS_DEFAULT_REGION", "value": "ca-central-1"}
