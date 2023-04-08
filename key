@@ -40,3 +40,23 @@ aws iam create-role --role-name CruddurServiceExecutionPolicy  --assume-role-pol
 -t frontend-react-js \
 -f Dockerfile.prod \
 .
+
+
+
+ "loadBalancers": [
+        {
+            "targetGroupArn": "arn:aws:elasticloadbalancing:ca-central-1:533378368499:targetgroup/cruddur-frontend-react-js/9f95b164319d3c7d",
+            "containerName": "frontend-react-js",
+            "containerPort": 3000
+        }
+    ],
+
+
+
+      "loadBalancers": [
+      {
+          "targetGroupArn": "arn:aws:elasticloadbalancing:ca-central-1:533378368499:targetgroup/cruddur-backend-flask-tg/643d9ac61ea5adac",
+          "containerName": "backend-flask",
+          "containerPort": 4567
+      }
+  ],
