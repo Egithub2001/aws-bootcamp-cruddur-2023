@@ -151,3 +151,24 @@ and then connect to ecs:
 ```sh
 aws ecs execute-command  --region $AWS_DEFAULT_REGION --cluster cruddur --task fc1a83bb54f4452b82bf527286a336fe --container backend-flask --command "/bin/bash" --interactive
 ```
+
+
+
+Create Repo
+
+aws ecr create-repository \
+  --repository-name backend-flask \
+  --image-tag-mutability MUTABLE
+
+Set URL
+
+export ECR_BACKEND_FLASK_URL="$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/backend-flask"
+echo $ECR_BACKEND_FLASK_URL
+
+Build Image
+
+docker build -t backend-flask .
+
+Tag Image
+
+docker tag backend-flask:latest $ECR_BACKEND_FLASK_URL:latest
