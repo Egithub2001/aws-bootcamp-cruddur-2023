@@ -165,6 +165,18 @@ Set URL
 export ECR_BACKEND_FLASK_URL="$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/backend-flask"
 echo $ECR_BACKEND_FLASK_URL
 
+below: we need to make sure we are using load balancer URL:
+
+docker build \
+--build-arg REACT_APP_BACKEND_URL="http://cruddur-alb-982130409.ca-central-1.elb.amazonaws.com:4567" \
+--build-arg REACT_APP_AWS_PROJECT_REGION="$AWS_DEFAULT_REGION" \
+--build-arg REACT_APP_AWS_COGNITO_REGION="$AWS_DEFAULT_REGION" \
+--build-arg REACT_APP_AWS_USER_POOLS_ID="ca-central-1_oQPCn5xsd" \
+--build-arg REACT_APP_CLIENT_ID="2ta996r3cs3kf329nr5glk84oj" \
+-t frontend-react-js \
+-f Dockerfile.prod \
+.
+
 Build Image
 
 docker build -t backend-flask .
