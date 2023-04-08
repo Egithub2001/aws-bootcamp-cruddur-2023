@@ -172,3 +172,7 @@ docker build -t backend-flask .
 Tag Image
 
 docker tag backend-flask:latest $ECR_BACKEND_FLASK_URL:latest
+
+Push Image
+
+docker push $ECR_BACKEND_FLASK_URL:latest
