@@ -28,3 +28,15 @@ aws iam create-role --role-name CruddurServiceExecutionPolicy  --assume-role-pol
        //   }
        // ]
       //},
+
+
+
+      docker build \
+--build-arg REACT_APP_BACKEND_URL="http://cruddur-alb-982130409.ca-central-1.elb.amazonaws.com:4567" \
+--build-arg REACT_APP_AWS_PROJECT_REGION="$AWS_DEFAULT_REGION" \
+--build-arg REACT_APP_AWS_COGNITO_REGION="$AWS_DEFAULT_REGION" \
+--build-arg REACT_APP_AWS_USER_POOLS_ID="ca-central-1_oQPCn5xsd" \
+--build-arg REACT_APP_CLIENT_ID="2ta996r3cs3kf329nr5glk84oj" \
+-t frontend-react-js \
+-f Dockerfile.prod \
+.
